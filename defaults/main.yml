@@ -1,0 +1,8 @@
+drd_create_network: no
+drd_net_name: custom
+drd_interface: docker1
+drd_net: 172.16.0.1/24
+drd_ip: "{{drd_net|ipaddr('address')}}"
+drd_netmask: "{{drd_net|ipaddr('netmask')}}"
+drd_network: "{{drd_net|ipaddr('network')}}"
+#drd_user: root

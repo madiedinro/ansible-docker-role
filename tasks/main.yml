@@ -1,0 +1,50 @@
+---
+- name: Adding Docker key
+  apt_key: >
+    keyserver="hkp://p80.pool.sks-keyservers.net:80"
+    id="58118E89F3A912897C070ADBF76221572C52609D"
+
+- name: Adding Docker repo
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
+    state: present
+
+- name: Updating apt repos
+  apt: update_cache=yes
+
+- name: Installing docker
+  apt: name=docker-engine state=present
+
+
+- name: Removing old libs
+  pip:
+    name: '{{item}}'
+    state: absent
+  with_items:
+    - docker-py
+    - docker-pycreds
+    - docker
+
+- name: Installing docker lib
+  pip:
+    name: docker
+    version: '2.7.0'
+
+- name: Creating docker network
+  docker_network:
+    name: '{{ drd_net_name }}'
+    driver_options:
+      com.docker.network.bridge.name: '{{ drd_interface }}'
+    ipam_options:
+      subnet: "{{ drd_net }}"
+  when: drd_create_network == True
+
+
+- name: Adding action user to docker group
+  user:
+    name: "{{drd_user}}"
+    groups:
+      - docker
+    append: yes
+  when: drd_user is defined and drd_user != 'root'
+
