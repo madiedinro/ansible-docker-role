@@ -8,13 +8,14 @@ Add to ansible playbook following:
 
     - import_role:
         name: dr.docker
+      vars:
         drd_user: "{{def_user}}"
         drd_create_network: no
         drd_net_name: custom
         drd_interface: docker1
         drd_net: 172.16.0.1/24
-        tags: ['docker']
-        become: yes
+      tags: ['docker']
+      become: yes
 
 if you need more flexibility use next params:
 
