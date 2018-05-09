@@ -15,7 +15,6 @@
 - name: Installing docker
   apt: name=docker-engine state=present
 
-
 - name: Removing old libs
   pip:
     name: '{{item}}'
@@ -35,6 +34,7 @@
     name: '{{ drd_net_name }}'
     driver_options:
       com.docker.network.bridge.name: '{{ drd_interface }}'
+      com.docker.network.bridge.host_binding_ipv4: "{{ drd_bind_ip }}"
     ipam_options:
       subnet: "{{ drd_net }}"
   when: drd_create_network == True
@@ -42,9 +42,8 @@
 
 - name: Adding action user to docker group
   user:
-    name: "{{drd_user}}"
+    name: "{{item}}"
     groups:
       - docker
     append: yes
-  when: drd_user is defined and drd_user != 'root'
-
+  with_items: '{{drd_users}}'

@@ -9,7 +9,8 @@ Add to ansible playbook following:
     - import_role:
         name: dr.docker
       vars:
-        drd_user: "{{def_user}}"
+        # add users to docker group
+        drd_users: ["{{def_user}}"]
         drd_create_network: no
         drd_net_name: custom
         drd_interface: docker1
@@ -25,7 +26,6 @@ if you need more flexibility use next params:
         drd_network: "{{drd_net|ipaddr('network')}}"
 
 params:
-- [**drd_user:** (str)] append user to docker group
 - [**drd_create_network:** (yes/no)] create additional docker network
 - [**drd_net_name:** (str)] new network name
 - [**drd_interface:**] (str) new network interface (default to docker1)

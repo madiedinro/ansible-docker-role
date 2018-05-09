@@ -2,7 +2,9 @@ drd_create_network: no
 drd_net_name: custom
 drd_interface: docker1
 drd_net: 172.16.0.1/24
-drd_ip: "{{drd_net|ipaddr(1)|ipaddr('address')"
-drd_netmask: "{{drd_net|ipaddr('netmask')}}"
-drd_network: "{{drd_net|ipaddr('network')}}"
+# drd_host_ip: "{{drd_net|ipaddr(1)|ipaddr('address')" #not used
+drd_bind_ip: "0.0.0.0"
+# drd_netmask: "{{drd_net|ipaddr('netmask')}}" # not used
+# drd_network: "{{drd_net|ipaddr('network')}}" # not used
+drd_users: []
 #drd_user: root
