@@ -40,11 +40,11 @@
   when: drd_create_network == True
 
 
-- name: Adding action user to docker group
+- name: Adding users to docker group
   user:
-    name: "{{drd_user}}"
+    name: "{{item}}"
     groups:
       - docker
     append: yes
-  when: drd_user is defined and drd_user != 'root'
+  with_items: "{{drd_users + drd_user|ternary([drd_user], [])}}"
 

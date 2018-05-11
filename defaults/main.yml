@@ -5,4 +5,5 @@ drd_net: 172.16.0.1/24
 drd_ip: "{{drd_net|ipaddr(1)|ipaddr('address')"
 drd_netmask: "{{drd_net|ipaddr('netmask')}}"
 drd_network: "{{drd_net|ipaddr('network')}}"
-#drd_user: root
+drd_user:
+drd_users: []
