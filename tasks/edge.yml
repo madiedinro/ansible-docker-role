@@ -1,0 +1,8 @@
+---
+- name: Adding Docker key for Edge version
+  apt_key: url="https://download.docker.com/linux/ubuntu/gpg" id="0EBFCD88"
+
+- name: Adding Docker repo for Edge version
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable"
+    state: present

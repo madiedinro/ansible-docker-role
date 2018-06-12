@@ -1,3 +1,4 @@
+drd_version: stable
 drd_create_network: no
 drd_net_name: custom
 drd_interface: docker1
