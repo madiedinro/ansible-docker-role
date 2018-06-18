@@ -7,12 +7,6 @@
   when: drd_version == 'edge'
   tags: [always]
 
-- name: Updating apt repos
-  apt: update_cache=yes
-
-- name: Installing docker
-  apt: name=docker-engine state=present
-
 - name: Removing old libs
   pip:
     name: '{{item}}'

@@ -6,3 +6,6 @@
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable"
     state: present
+
+- name: Installing docker
+  apt: update_cache=yes name=docker-ce state=present

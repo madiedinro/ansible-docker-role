@@ -9,3 +9,6 @@
   apt_repository:
     repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
     state: present
+
+- name: Installing docker
+  apt: update_cache=yes name=docker-engine state=present
