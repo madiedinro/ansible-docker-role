@@ -27,6 +27,7 @@
     driver_options:
       com.docker.network.bridge.name: '{{ drd_interface }}'
       com.docker.network.bridge.host_binding_ipv4: "{{ drd_bind_ip }}"
+      com.docker.network.driver.mtu: '{{ drd_mtu }}'
     ipam_options:
       subnet: "{{ drd_net }}"
   when: drd_create_network == True

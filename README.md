@@ -19,6 +19,8 @@ Add to ansible playbook following:
         drd_interface: docker1
         # new network host ip with subnet bit mask (/24 = 255.255.255.0)
         drd_net: 172.16.0.1/24
+        # mtu for network
+        drd_mtu: "1500"
       tags: ['docker']
       become: yes
 
