@@ -10,3 +10,5 @@ drd_network: "{{drd_net|ipaddr('network')}}"
 drd_user:
 drd_users: []
 drd_bind_ip: "0.0.0.0"
+drd_mtu: "1500"
+
