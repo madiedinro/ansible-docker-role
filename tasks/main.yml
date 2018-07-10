@@ -32,6 +32,11 @@
   pip:
     name: docker
     version: '2.7.0'
+    
+- name: Installing docker-compose
+  pip:
+    name: docker-compose
+
 
 - name: Creating docker network
   docker_network:
