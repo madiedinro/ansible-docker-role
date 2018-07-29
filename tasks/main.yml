@@ -5,7 +5,7 @@
 
 - import_tasks: "tasks/edge.yml"
   when: drd_version == 'edge'
-  tags: [always]
+  tags: ["always", "docker-edge"]
 
 - file:
     state: directory
