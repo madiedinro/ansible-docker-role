@@ -45,7 +45,7 @@
       com.docker.network.bridge.host_binding_ipv4: "{{ drd_bind_ip }}"
       com.docker.network.driver.mtu: '{{ drd_mtu }}'
     ipam_config:
-      subnet: "{{ drd_net }}"
+      - subnet: "{{ drd_net }}"
   when: drd_create_network == True
 
 
