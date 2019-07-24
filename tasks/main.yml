@@ -21,12 +21,11 @@
 
 - name: Removing old libs
   pip:
-    name: '{{item}}'
+    name:
+      - docker-py
+      - docker-pycreds
+      - docker
     state: absent
-  with_items:
-    - docker-py
-    - docker-pycreds
-    - docker
 
 - name: Installing docker lib
   pip:
@@ -45,7 +44,7 @@
       com.docker.network.bridge.name: '{{ drd_interface }}'
       com.docker.network.bridge.host_binding_ipv4: "{{ drd_bind_ip }}"
       com.docker.network.driver.mtu: '{{ drd_mtu }}'
-    ipam_options:
+    ipam_config:
       subnet: "{{ drd_net }}"
   when: drd_create_network == True
 
